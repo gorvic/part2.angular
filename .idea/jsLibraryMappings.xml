@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{angular.dev node_modules}" />
+    <file url="PROJECT" libraries="{angular.dev node_modules, gruntjs-DefinitelyTyped, jasmine-DefinitelyTyped, ui-router}" />
+  </component>
+</project>

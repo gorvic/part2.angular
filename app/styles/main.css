@@ -1,0 +1,15 @@
+.form-group.required .control-label:after {
+      content:"*";
+       color:red;
+ }
+
+.body {
+    padding-bottom: 70px;
+}
+
+/*AngularJS has a directive called ng-cloak, which is a mechanism to hide sections of the*/
+/*page while AngularJS bootstraps and finishes loading. ng-cloak uses the following CSS*/
+/*rules, which are automatically included when you load angular.js or angular.min.js:*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Каталог объявлений (ч.2: Laravel 5.2 + AngularJs 1.4.8)</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- build:css styles/lib.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="app/styles/main.css" rel="stylesheet"/>
+
+</head>
+
+<body ng-app="angulardevApp">
+<div ng-controller="ApplicationController as vm">
+    <!--[if lte IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+        your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!--Нужен апостроф http://stackoverflow.com/questions/22991658/simple-ng-include-not-working-->
+    <div ng-include="'layouts/navbar.html'"></div>
+    <div class="container">
+        <div ui-view></div>
+    </div>
+    <!--http://getbootstrap.com/components/#navbar-fixed-bottom-->
+    <div ng-include="'layouts/footer.html'"></div>
+    </div>
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/satellizer/satellizer.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <!-- endbower -->
+
+    <!-- Bootstrapping -->
+    <script src="app.module.js"></script>
+    <script src="_advertises/advertises.module.js"></script>
+    <script src="_advertises/advertises.route.js"></script>
+    <script src="_advertises/advertises.controller.js "></script>
+    <script src="_advertises/advertisedetail.controller.js "></script>
+    <script src="_advertises/advertisedetail.directive.js"></script>
+
+<script src="blocks/exception/exception.module.js"></script>
+<script src="blocks/logger/logger.module.js"></script>
+<script src="blocks/router/router.module.js"></script>
+<script src="core/core.module.js"></script>
+<script src="blocks/exception/exception-handler.provider.js"></script>
+<script src="blocks/exception/exception.js"></script>
+<script src="blocks/logger/logger.js"></script>
+<script src="blocks/router/router-helper.provider.js"></script>
+<script src="core/config.js"></script>
+<script src="core/constants.js"></script>
+<script src="core/core.route.js"></script>
+<script src="core/dataservice.js"></script>
+</body>
+</html>

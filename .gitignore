@@ -1,0 +1,6 @@
+node_modules
+tmp
+.idea/workspace.xml
+.idea/misc.xml
+.floo
+.flooignore

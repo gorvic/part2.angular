@@ -1,0 +1,14 @@
+<form name="loginForm" ng-controller="LoginController"
+      ng-submit="vm.login(credentials)" novalidate>
+
+    <label for="email">Адрес эл. почты:</label>
+    <input type="text" id="email"
+           ng-model="vm.credentials.email">
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password"
+           ng-model="vm.credentials.password">
+
+    <button type="submit">Login</button>
+
+</form>

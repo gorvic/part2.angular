@@ -1,0 +1,189 @@
+<section id="advertise-view" class="mainbar">
+    <div class="container" ng-cloak="">
+
+        <div>
+            <button class="btn btn-info btn-form-md"
+                    ng-click="vm.goBack()">
+                <i class="fa fa-hand-o-left"></i>&nbsp;Назад
+            </button>
+            <button class="btn btn-info btn-form-md"
+                    ng-click="vm.cancel()">
+                <i class="fa fa-undo"></i>&nbsp;Отмена
+            </button>
+            <button class="btn btn-info btn-form-md"
+                    ng-click="vm.save()"
+                    ng-disabled="advertiseForm.$invalid" >
+                <i class="fa fa-save"></i>&nbsp;Сохранить
+            </button>
+
+            <!--Need ng-hide for show/hide animations-->
+                <span ng-show="vm.hasChanges" class="dissolve-animation ng-hide flag-haschanges">
+                    <i class="fa fa-asterisk fa fa-asterisk-large" rel="tooltip" title="You have changes"></i>
+                </span>
+        </div>
+
+        <div class="widget wgreen">
+            <!--<div data-cc-widget-header title="Edit {{vm.advertise.fullName || '  Speaker'}}"></div>-->
+            <div class="widget-content user">
+                <form name="advertiseForm ">
+                    <!--organization_form_id-->
+                    <div class="form-group">
+                        <div class="radio radio-primary">
+                            <label class="radio-inline"><input type="radio" name="organization_form_id"
+                                                               value="0"
+                                                               ng-model="vm.advertise.organization_form_id">Частное
+                                лицо</label>
+                            <label class="radio-inline"><input type="radio" name="organization_form_id"
+                                                               value="1"
+                                                               ng-model="vm.advertise.organization_form_id">Организация</label>
+                        </div>
+                    </div>
+                    <!--seller_name-->
+                    <div class="form-group required" >
+                        <label class="control-label">Ваше имя</label>
+                        <div>
+                            <input class="form-control"
+                                   name="seller_name"
+                                   ng-model="vm.advertise.seller_name"
+                                   placeholder="Ваше имя"
+                                   required/>
+                        </div>
+                        <!--http://geoffford.co.uk/blog/angularjs-forms-and-validation-->
+                        <div class="alert alert-danger" ng-show="(vm.isSaving || advertiseForm.seller_name.$dirty )
+                        && advertiseForm.seller_name.$invalid">
+                            <small ng-show="advertiseForm.seller_name.$error.required">
+                                Укажите имя продавца
+                            </small>
+                        </div>
+                    </div>
+
+                    <!--email-->
+                    <div class="form-group required">
+                        <label class="control-label">Электронная почта</label>
+                        <div>
+                            <input name="email" type="email" class="floating-label form-control"
+                                   name="email"
+                                   ng-model="vm.advertise.email"
+                                   placeholder="Электронная почта"
+                                   required/>
+                        </div>
+
+                        <div class="alert alert-danger" ng-show="(vm.isSaving || advertiseForm.email.$dirty )
+                        && advertiseForm.email.$invalid">
+                            <small ng-show="advertiseForm.email.$error.required">
+                                Укажите адрес электронной почты!
+                            </small>
+                            <small ng-show="advertiseForm.email.$invalid && !advertiseForm.email.$error.required">
+                                Укажите корректный адрес электронной почты!
+                            </small>
+                        </div>
+                    </div>
+
+                    <!--phone-->
+                    <div class="form-group">
+                        <label class="control-label">Номер телефона</label>
+                        <div>
+                            <input name="phone" type="text" class="floating-label form-control"
+                                   ng-model="vm.advertise.phone"
+                                   placeholder="Номер телефона"/>
+                        </div>
+                    </div>
+
+                    <!--location_id-->
+                    <div class="form-group">
+                        <div>
+                            <label class="control-label">Город</label>
+                            <select class="floating-label form-control"
+                                    ng-model="vm.advertise.location_id"
+                                    ng-options="option.id as option.name for option in vm.cities">
+                                <!--http://jsfiddle.net/DianaNassar/FShdc/-->
+                                <option value="">--> Выберите город <--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--category_id-->
+                    <div class="form-group required">
+                        <label class="control-label">Категория</label>
+                        <div>
+                            <select class="floating-label form-control"
+                                    ng-model="vm.advertise.category_id"
+                                    ng-options="option.id as option.name group by option.parent_name for option in vm.categories"
+                                    required>
+                                <option value="">--> Выберите категорию <--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--allow_mails-->
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label><input name="allow_mails" type="checkbox" value="1"
+                                          ng-model="vm.advertise.allow_mails"
+                                          ng-false-value="1" ng-true-value="0">Я
+                                не хочу получать вопросы по объявлению по e-mail</label>
+                        </div>
+                    </div>
+
+                    <!--title-->
+                    <div class="form-group required">
+                        <label class="control-label">Название</label>
+                        <div>
+                            <input class="form-control"
+                                   name="title"
+                                   ng-model="vm.advertise.title"
+                                   placeholder="Title"
+                                   required/>
+                        </div>
+                        <div class="alert alert-danger" ng-show="(vm.isSaving || advertiseForm.title.$dirty )
+                        && advertiseForm.title.$invalid">
+                            <small ng-show="advertiseForm.title.$error.required">
+                                Заполните название объявления
+                            </small>
+                        </div>
+                    </div>
+
+                    <!--description-->
+                    <div class="form-group required">
+                        <label class="control-label">Описание</label>
+                        <div>
+                            <input class="form-control"
+                                   name="description"
+                                   ng-model="vm.advertise.description"
+                                   placeholder="Описание"
+                                   required/>
+                        </div>
+                        <div class="alert alert-danger" ng-show="(vm.isSaving || advertiseForm.description.$dirty )
+                        && advertiseForm.description.$invalid">
+                            <small ng-show="advertiseForm.description.$error.required">
+                                Заполните описание объявления
+                            </small>
+                        </div>
+                    </div>
+
+                    <!--price-->
+                    <div class="form-group required">
+                        <label class="control-label">Цена</label>
+                        <div>
+                            <input type="number" class="form-control"
+                                   name="price"
+                                   ad-string-to-number
+                                   ng-model="vm.advertise.price"
+                                   placeholder="Цена"
+                                   required/>
+                        </div>
+                        <div class="alert alert-danger" ng-show="(vm.isSaving || advertiseForm.price.$dirty )
+                        && advertiseForm.price.$invalid">
+                            <small ng-show="advertiseForm.price.$error.required">
+                                Укажите цену!
+                            </small>
+                            <small ng-show="advertiseForm.price.$invalid && !advertiseForm.price.$error.required">
+                                Укажите цену в правильном формате!
+                            </small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
